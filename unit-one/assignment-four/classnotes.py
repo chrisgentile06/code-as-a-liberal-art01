@@ -20,7 +20,7 @@ from PIL import Image
 
 #####################################################################################
 #####################################################################################
-# PUT ONE red PIXEL
+#PUT ONE red PIXEL
 
 # img = Image.open( sys.argv[1] )
 # one_pixel = img.getpixel( (0,0) )
@@ -160,8 +160,8 @@ from PIL import Image
 
 # #####################################################################################
 # #####################################################################################
-# # # GENERATE IMAGE EX 1 - 400x400 ---- TO RUN THIS FROM MY TERMINAL I WROTE
-# ## python3 classnotes.py generative-3.jpg 
+# # GENERATE IMAGE EX 1 - 400x400 ---- TO RUN THIS FROM MY TERMINAL I WROTE
+## python3 classnotes.py generative-3.jpg 
 
 # if len(sys.argv) != 2:
 #     exit("This program requires one argument: the name of the image file that will be created.")
@@ -351,38 +351,38 @@ from PIL import Image
 
 #####################################################################################
 #####################################################################################
-# EX 6 IMAGE OVERLAY WITH TRANSPARENCY TO RUN THIS FROM MY TERMINAL I WROTE
-## python3 classnotes.py haraway-dog-original.jpg punch-original.jpg
+#EX 6 IMAGE OVERLAY WITH TRANSPARENCY TO RUN THIS FROM MY TERMINAL I WROTE
+# python3 classnotes.py haraway-dog-original.jpg punch-original.jpg
 
-# if len(sys.argv) != 3:
-#     exit("This program requires two arguments: the name of two image files to combine.")
+if len(sys.argv) != 3:
+    exit("This program requires two arguments: the name of two image files to combine.")
 
-# # open both images
-# img1 = Image.open( sys.argv[1] )
-# img2 = Image.open( sys.argv[2] )
+# open both images
+img1 = Image.open( sys.argv[1] )
+img2 = Image.open( sys.argv[2] )
 
-# # resize both images so they are no bigger than 400x400
-# # but preserve the original aspect ratio
-# img1.thumbnail( (400,400) )
-# img2.thumbnail( (400,400) )
+# resize both images so they are no bigger than 400x400
+# but preserve the original aspect ratio
+img1.thumbnail( (400,400) )
+img2.thumbnail( (400,400) )
 
-# # make a new image 600x600, with a white background
-# # Note that this image now has an "alpha" component
-# new_image = Image.new( "RGBA", (400,150), "white" )
+# make a new image 600x600, with a white background
+# Note that this image now has an "alpha" component
+new_image = Image.new( "RGBA", (400,400), "white" )
 
-# # paste in the first image to the upper-left corner (0,0)
-# new_image.paste(img1, (0,0) )
+# paste in the first image to the upper-left corner (0,0)
+new_image.paste(img1, (0,0) )
 
-# # add some transparency (alpha) to the second image
-# img2.putalpha(128)
+# add some transparency (alpha) to the second image
+img2.putalpha(128)
 
-# # paste in the second image, preserving its new transparency
-# new_image.alpha_composite(img2, (0,0) )
+# paste in the second image, preserving its new transparency
+new_image.alpha_composite(img2, (0,0) )
 
-# # save the resulting image
-# # Note that we must convert it to RGB with no alpha to save it as a JPEG
-# new_image.convert("RGB").save("overlay-transparent.jpg")
+# save the resulting image
+# Note that we must convert it to RGB with no alpha to save it as a JPEG
+new_image.convert("RGB").save("overlay-transparent.jpg")
 
-# # Alternatively, we could have avoided converting by saving it to a
-# # PNG like this (since PNGs allow alpha):
-# # new_image.save("overlay-transparent.png")
+# Alternatively, we could have avoided converting by saving it to a
+# PNG like this (since PNGs allow alpha):
+# new_image.save("overlay-transparent.png")
